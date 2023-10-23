@@ -36,7 +36,5 @@ jobs:
       with:
             # whether need to push
             push: true
-            tags: |
-              ${{ secrets.DOCKERHUB_USERNAME }}/pg:latest
-              ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{ github.event.issue.number }}
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{ github.run_id }} || ${{ secrets.DOCKERHUB_USERNAME }}/pg:latest
             
