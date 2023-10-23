@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    #checkout code
     - name: Checkout
       uses: actions/checkout@v4
     - name: Set up Docker Buildx
@@ -29,4 +30,4 @@ jobs:
       name: Build the Docker image and push
       with:
             push: true
-            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:latest
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{date 'YYYYMMDD'}}
