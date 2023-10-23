@@ -36,5 +36,5 @@ jobs:
       with:
             # whether need to push
             push: true
-            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{ GITEVENTID }} 
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{ variables.GITEVENTID }} 
             
