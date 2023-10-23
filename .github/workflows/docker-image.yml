@@ -28,4 +28,4 @@ jobs:
       name: Build the Docker image and push
       with:
             push: true
-            tags: pg:$(date +%s)
+            tags: boyia0425/pg:$(date +%s)
