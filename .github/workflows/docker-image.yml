@@ -36,8 +36,7 @@ jobs:
       with:
             # whether need to push
             push: true
-            build-args: issue_number=${{ github.event.issue.number }}
             tags: |
               ${{ secrets.DOCKERHUB_USERNAME }}/pg:latest
-              ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{ issue_number }}
+              ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{ github.event.issue.number }}
             
