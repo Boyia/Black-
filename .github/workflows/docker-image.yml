@@ -36,5 +36,6 @@ jobs:
       with:
             # whether need to push
             push: true
-            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{ github.event.commits[0].id:0:7 }} 
+            env: full_commit=${{ github.event.commits[0].id }} 
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{full_commit: 0:7 }} 
             
