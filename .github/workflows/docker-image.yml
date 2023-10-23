@@ -13,6 +13,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env: 
+      commitid: github.event.commits[0].id
     
     steps:
     #checkout code
@@ -36,5 +38,5 @@ jobs:
       with:
             # whether need to push
             push: true
-            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{ variables.GITEVENTID }} 
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{ commitid }} 
             
