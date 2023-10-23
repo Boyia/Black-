@@ -28,4 +28,4 @@ jobs:
       name: Build the Docker image and push
       with:
             push: true
-            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:$(date +%s)
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:latest
