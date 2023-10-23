@@ -9,8 +9,6 @@ on:
     types: [auto_merge_enabled ]
 
 jobs:
-  env: 
-      commitid: github.event.commits[0].id
   build:
 
     runs-on: ubuntu-latest
@@ -38,5 +36,5 @@ jobs:
       with:
             # whether need to push
             push: true
-            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{ commitid }} 
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{ github.event.commits[0].id }} 
             
