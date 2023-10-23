@@ -35,7 +35,6 @@ jobs:
     #build docker image and push it to the docker hub
     - uses: docker/build-push-action@v5
       name: Build the Docker image and push
-      run: ${commitid}
       with:
             # whether need to push
             push: true
