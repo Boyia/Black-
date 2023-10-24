@@ -17,7 +17,7 @@ jobs:
     steps:
     - name: Add SHORT_SHA env property with commit short sha
       id: commitid
-      run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
+      run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_OUTPUT
     #checkout code
     - name: Checkout
       uses: actions/checkout@v4
@@ -39,5 +39,5 @@ jobs:
       with:
             # whether need to push
             push: true
-            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{ steps.commitid.SHORT_SHA }} 
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{ steps.commitid.outputs.SHORT_SHA }} 
             
