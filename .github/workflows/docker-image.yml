@@ -38,5 +38,5 @@ jobs:
       with:
             # whether need to push
             push: true
-            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{ commit_id }} 
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:$commit_id
             
