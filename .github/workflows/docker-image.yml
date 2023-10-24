@@ -33,8 +33,10 @@ jobs:
     #build docker image and push it to the docker hub
     - uses: docker/build-push-action@v5
       name: Build the Docker image and push
+      env:
+        commit_id: github.event.commits[0].id 
       with:
             # whether need to push
             push: true
-            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{ github.event.commits[0].id }} 
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{ commit_id }} 
             
