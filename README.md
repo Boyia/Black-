@@ -11,3 +11,6 @@ psql -h localhost -p 5437 -U postgres -d postgres -W
 
 ## input passwords
 postgres
+
+## Gitaction
+now this repo can automatically create a image when someone push to repo or pass the pull request
