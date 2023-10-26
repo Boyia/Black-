@@ -14,3 +14,4 @@ postgres
 
 ## Gitaction
 now this repo can automatically create a image when someone push to repo or pass the pull request
+test for PR
