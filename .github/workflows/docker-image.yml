@@ -6,7 +6,7 @@ on:
     tags: [v*]
   pull_request:
     branches: [ "main" ]
-    types: [auto_merge_enabled ]
+    types: [opened ]
 
 jobs:
   build:
