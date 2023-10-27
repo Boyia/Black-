@@ -45,8 +45,19 @@ jobs:
     #build docker image and push it to the docker hub
     - uses: docker/build-push-action@v5
       name: Build the Docker image and push
+      if: ${{ github.event_name }} == 'push'
       with:
             # whether need to push
             push: true
-            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:${{ steps.commitid.outputs.SHORT_SHA }} 
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:prod_${{ steps.commitid.outputs.SHORT_SHA }} 
+
+    - uses: docker/build-push-action@v5
+      name: Build the Docker image and push pro
+      if: ${{ github.event_name }} == 'pull_request'
+      with:
+            # whether need to push
+            push: true
+            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:edge_${{ steps.commitid.outputs.SHORT_SHA }} 
+            
+
             
