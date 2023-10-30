@@ -1,3 +1,4 @@
 set this as the test file
 trigger rules
-with two different ways,edge and prod
+check the protect rules
+trigger edge
