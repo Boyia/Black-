@@ -42,23 +42,28 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    
-    #build docker image and push it to the docker hub
-    - if: ${{ github.event_name == 'push' }} 
-      uses: docker/build-push-action@v5
-      name: Build the Docker image and push
-      with:
-            # whether need to push
-            push: true
-            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:prod_${{ steps.commitid.outputs.SHORT_SHA }} 
+    - name: Build docker image manually
+      run: docker build . --file Dockerfile --tag ${{ secrets.DOCKERHUB_USERNAME }}/pg:prod_${{ steps.commitid.outputs.SHORT_SHA }} 
 
-    - if: ${{ github.event_name == 'pull_request' }} 
-      uses: docker/build-push-action@v5
-      name: Build the Docker image and push pro
-      with:
-            # whether need to push
-            push: true
-            tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:edge_${{ steps.commitid.outputs.SHORT_SHA }} 
+    - if: ${{ github.event_name == 'push' }} 
+      name: Push docker image
+      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/pg:prod_${{ steps.commitid.outputs.SHORT_SHA }} 
+    #build docker image and push it to the docker hub
+  #  - if: ${{ github.event_name == 'push' }} 
+  #    uses: docker/build-push-action@v5
+  #    name: Build the Docker image and push
+  #    with:
+  #          # whether need to push
+   #         push: true
+  #          tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:prod_${{ steps.commitid.outputs.SHORT_SHA }} 
+
+   # - if: ${{ github.event_name == 'pull_request' }} 
+   #   uses: docker/build-push-action@v5
+   #   name: Build the Docker image and push pro
+   #   with:
+    #        # whether need to push
+     #       push: true
+      #      tags: ${{ secrets.DOCKERHUB_USERNAME }}/pg:edge_${{ steps.commitid.outputs.SHORT_SHA }} 
             
 
             
